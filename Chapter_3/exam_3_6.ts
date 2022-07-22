@@ -1,5 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs'
+import path from 'path'
 
 // Help command
 const help = () => {
@@ -25,6 +25,7 @@ const getArgs = () => {
     exclude: ['node_modules'],
     help: false
   };
+
   for (const option of process.argv.slice(2)) {
     // Invalid arguments
     if (!option.startsWith('--')) throw new Error(`Invalid arguments provided (${option})`);
@@ -59,22 +60,27 @@ const countLines = async (directory: string, exclude: string[], fileTypes: strin
         // Handle --fileTypes
         if (fileTypes.reduce((prev, curr) => (entry.name.endsWith(curr) ? false : prev), true))
           continue;
-
-        // Read line by chunks and count the new lines (represented as 10 in utf-8)
-        const stream = fs.createReadStream(path.join(directory, entry.name));
-        for await (const chunk of stream) {
-          let lastNewLine = -1;
-          do {
-            lastNewLine = chunk.indexOf(10, lastNewLine + 1);
-            count++;
-          } while (lastNewLine > 0);
-        }
+        
+        // Read the whole file
+        const file = fs.readFileSync(path.join(directory, entry.name), { encoding: 'utf-8' });
+        
+        // Up the count by the amount of non empty lines
+        count += file.split(/\r?\n/gm).filter(line => line.trim().length !== 0).length
       } else if (entry.isDirectory()) {
         count += await countLines(path.join(directory, entry.name), exclude, fileTypes);
       }
     }
     return count;
   } catch (e) {
+    // If the path doesn't lead to a directory attempt to read a file there instead
+    if ((e as NodeJS.ErrnoException).code === 'ENOTDIR') {
+      try {
+        const file = fs.readFileSync(directory, { encoding: 'utf-8' });
+        return file.split(/\r?\n/gm).filter(line => line.trim().length !== 0).length
+      } catch (e) {
+        throw e;
+      }
+    }
     throw e;
   }
 };
