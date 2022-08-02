@@ -8,39 +8,25 @@ function countTypes(arr: any[]) {
     undefinedCount: 0, //
     datesCount: 0, //
     booleansCount: 0, //
-    functions: 0,
-  };
-
-  for (const item of arr) {
-    if (item === null) count.nullCount++;
-    else if (item === undefined) count.undefinedCount++;
-    else if (typeof item === "string") count.stringsCount++;
-    else if (typeof item === "number" || typeof item === "bigint") count.numericsCount++;
-    else if (typeof item === "boolean") count.booleansCount++;
-    else if (typeof item === "function") count.functions++;
-    else if (Array.isArray(item)) count.arraysCount++;
-    else if (item instanceof Date) count.datesCount++;
-
-    // Separate object check (functions are considered objects too)
-    if ((typeof item === "object" || typeof item === 'function') && item !== null) count.objectsCount++;
+    functions: 0
   }
 
-  return count;
+  for (const item of arr) {
+    if (item === null) count.nullCount++
+    else if (item === undefined) count.undefinedCount++
+    else if (typeof item === 'string') count.stringsCount++
+    else if (typeof item === 'number' || typeof item === 'bigint') count.numericsCount++
+    else if (typeof item === 'boolean') count.booleansCount++
+    else if (typeof item === 'function') count.functions++
+    else if (Array.isArray(item)) count.arraysCount++
+    else if (item instanceof Date) count.datesCount++
+
+    // Separate object check (functions are considered objects too)
+    if ((typeof item === 'object' || typeof item === 'function') && item !== null)
+      count.objectsCount++
+  }
+
+  return count
 }
 
-// Example usage:
-// const input = [
-//   6,
-//   "Test",
-//   "value",
-//   1,
-//   undefined,
-//   null,
-//   () => {
-//     console.log("Hello,  world!");
-//   },
-//   { count: 5 },
-// ];
-// console.log(countTypes(input));
-
-export { countTypes };
+export { countTypes }

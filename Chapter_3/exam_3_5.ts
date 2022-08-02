@@ -10,28 +10,28 @@ Object.deepCopy = function <A, B>(obj: A, obj2?: B) {
     for (const [key, value] of Object.entries(from)) {
       // Value is an array
       if (Array.isArray(value)) {
-        to[key] = [];
-        copyTo(value, to[key]);
+        to[key] = []
+        copyTo(value, to[key])
       }
       // Value is an object
       else if (typeof value === 'object' && value !== null) {
-        to[key] = {};
-        copyTo(value, to[key]);
+        to[key] = {}
+        copyTo(value, to[key])
       }
       // Value is a function
-      else if (typeof value === 'function') to[key] = value.bind(to);
+      else if (typeof value === 'function') to[key] = value.bind(to)
       // Otherwise it is a primitive
-      else to[key] = value;
+      else to[key] = value
     }
-  };
+  }
 
-  const copy = {};
+  const copy = {}
 
-  if (obj2) copyTo(obj2, copy);
-  copyTo(obj, copy);
+  if (obj2) copyTo(obj2, copy)
+  copyTo(obj, copy)
 
-  return copy as B & A;
-};
+  return copy as B & A
+}
 
 // Example usage:
 // const original = {
@@ -56,4 +56,4 @@ Object.deepCopy = function <A, B>(obj: A, obj2?: B) {
 // console.log(original);
 // console.log(copy);
 
-export { }
+export {}
