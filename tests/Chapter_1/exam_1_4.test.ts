@@ -28,7 +28,7 @@ describe('Chapter 1: exam 1.4', () => {
       undefinedCount: 1,
       datesCount: 1,
       booleansCount: 2,
-      functions: 1,
+      functions: 1
     })
   })
 })
