@@ -126,15 +126,4 @@ function findObj_Part4(input: any[] | Object, obj: Object) {
   return false
 }
 
-// Example usage
-// const person = { name: 'John Doe' };
-// const input1 = [6, "Test", "value", person, 1, undefined, null,  () => { console.log("Hello,  world!") }, { count: 5 }, { name: "John Doe" }];
-// const input2 = [6, "Test", "value", 1, undefined, null,  () => { console.log("Hello,  world!") }, { count: 5 }, { name: "John Doe", person }];
-// const input3 = [6, "Test", 1, undefined, null, () => { console.log("Hello,  world!") }, { count: 5 }, { randomStuff: { another: "John Doe" } }];
-// const input4 = [6, "Test", "value", 1, undefined, null,  () => { console.log("Hello,  world!") }, { count: 5 }, { name: "John Doe", person }];
-// console.log(findObj_Part1(input1, person));
-// console.log(findObj_Part2(input2, person));
-// console.log(findObj_Part3(input3, person));
-// console.log(findObj_Part4(input4, person));
-
 export { findObj_Part1, findObj_Part2, findObj_Part3, findObj_Part4 }

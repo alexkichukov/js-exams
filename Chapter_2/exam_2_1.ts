@@ -47,21 +47,4 @@ Array.prototype.minMaxSort = function (compareFunction) {
   }
 }
 
-// Example usage:
-// const test = [2, 0, 8, 1, 5, 3, 9, 12, 5];
-// const test2 = [2, 0, 8, 1, 5, 3, 9, 12, 5];
-// const test3 = [2, 0, 8, 1, 5, 3, 9, 12, 5];
-
-// const comparer: (a: any, b: any) => number = (a, b) => {
-//   return a - b;
-// }
-
-// test.bubbleSort(comparer);
-// test2.sort(comparer);
-// test3.minMaxSort(comparer);
-
-// console.log(test.join(', '));
-// console.log(test2.join(', '));
-// console.log(test3.join(', '));
-
 export {}
