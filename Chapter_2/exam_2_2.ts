@@ -54,7 +54,7 @@ function findObj_Part3(input: any[] | Object, obj: Object) {
 
     // If the two arrays dont have the same
     for (let i = 0; i < values1.length; i++) {
-      if (values1.includes(values2[i])) values2.splice(i, 1)
+      if (values2.includes(values1[i])) values2.splice(i, 1)
       else return false
     }
 
@@ -106,7 +106,7 @@ function findObj_Part4(input: any[] | Object, obj: Object) {
 
     // If the two arrays dont have the same
     for (let i = 0; i < values1.length; i++) {
-      if (values1.includes(values2[i])) values2.splice(i, 1)
+      if (values2.includes(values1[i])) values2.splice(i, 1)
       else return false
     }
 

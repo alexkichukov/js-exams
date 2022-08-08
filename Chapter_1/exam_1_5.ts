@@ -3,13 +3,9 @@ function getWeight_Part1(obj: Object | any): number {
   // Searches first level properties only and returns their total weight
   function searchObject(obj: Object): number {
     let weight = 0
+    const values = Object.values(obj)
 
-    for (const prop in obj) {
-      // Skip properties that might be from the prototype chain
-      if (!obj.hasOwnProperty(prop)) continue
-
-      const item = obj[prop as keyof Object]
-
+    for (const item of values) {
       if (item === null) weight += 2
       else if (item === undefined) weight += 2
       else if (item instanceof Date) weight += 5
@@ -17,7 +13,7 @@ function getWeight_Part1(obj: Object | any): number {
       else if (typeof item === 'number' || typeof item === 'bigint') weight += 4
       else if (typeof item === 'string') weight += 8
       else if (typeof item === 'function') weight += 10
-      else if (Array.isArray(item)) weight += 10
+      // Objects and arrays left here only
       else if (typeof item === 'object') {
         weight += 10
       }
@@ -27,7 +23,7 @@ function getWeight_Part1(obj: Object | any): number {
   }
 
   // If argument isn't an object, pass it as if it is an object
-  if (typeof obj !== 'object' || obj === null) return searchObject({ obj })
+  if (typeof obj !== 'object' || Array.isArray(obj)) return searchObject({ obj })
 
   return searchObject(obj)
 }
@@ -37,13 +33,9 @@ function getWeight_Part2(obj: Object | any): number {
   // Recursively searches all properties (deep search) and returns their total weight
   function searchObject(obj: Object): number {
     let weight = 0
+    const values = Object.values(obj)
 
-    for (const prop in obj) {
-      // Skip properties that might be from the prototype chain
-      if (!obj.hasOwnProperty(prop)) continue
-
-      const item = obj[prop as keyof Object]
-
+    for (const item of values) {
       if (item === null) weight += 2
       else if (item === undefined) weight += 2
       else if (item instanceof Date) weight += 5
@@ -51,7 +43,7 @@ function getWeight_Part2(obj: Object | any): number {
       else if (typeof item === 'number' || typeof item === 'bigint') weight += 4
       else if (typeof item === 'string') weight += 8
       else if (typeof item === 'function') weight += 10
-      else if (Array.isArray(item)) weight += 10
+      // Object and arrays left here only
       else if (typeof item === 'object') {
         weight += 10
         weight += searchObject(item)
@@ -62,7 +54,7 @@ function getWeight_Part2(obj: Object | any): number {
   }
 
   // If argument isn't an object, pass it as if it is an object
-  if (typeof obj !== 'object' || obj === null) return searchObject({ obj })
+  if (typeof obj !== 'object' || Array.isArray(obj)) return searchObject({ obj })
 
   return searchObject(obj)
 }

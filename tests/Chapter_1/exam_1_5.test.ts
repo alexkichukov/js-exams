@@ -12,14 +12,22 @@ describe('Chapter 1: exam 1.5', () => {
     report: () => {
       console.log('Hello,  world!')
     },
-    experience: { count: 5 }
+    isReady: true,
+    experience: { count: 5 },
+    date: new Date()
   }
 
   it('getWeight Part 1 calculates correct weight', () => {
-    expect(getWeight_Part1(input)).toBe(58)
+    // Should be a shallow search
+    expect(getWeight_Part1(input)).toBe(67)
+    // Works for non objects passed too
+    expect(getWeight_Part1(['hello', 123])).toBe(10)
   })
-
+  
   it('getWeight Part 2 calculates correct weight', () => {
-    expect(getWeight_Part2(input)).toBe(70)
+    // Should be a deep search
+    expect(getWeight_Part2(input)).toBe(79)
+    // Works for non objects passed too
+    expect(getWeight_Part2(['hello', 123])).toBe(22)
   })
 })
