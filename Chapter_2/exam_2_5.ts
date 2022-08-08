@@ -29,19 +29,4 @@ const flatten = (input: Object[]): FlattenedObject[] => {
   return result
 }
 
-// Example usage:
-// const people = [{
-//   person: {
-//     firstName: {
-//       name: [{ name: 1 }, "4"],
-//     },
-//     lastName: "Doe",
-//     role: "Admin"
-//   },
-//   permissions: ["read", "write", "special"],
-//   age: 42,
-//   competencies: [{skill: "JavaScript", level: "junior"}, {skill: "css", level: "junior"}]
-// }]
-// console.log(flatten(people));
-
 export { flatten }

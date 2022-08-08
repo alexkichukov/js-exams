@@ -8,9 +8,6 @@ const randomizeAndFindLongestSequence = (arr: number[]) => {
     randomized.push(copy.splice(randIndex, 1)[0])
   }
 
-  // Log randomized array if needed:
-  console.log('Randomized array:', randomized.join(', '))
-
   // Store all sequences of ascending numbers
   const sequences: number[][] = []
 
@@ -32,8 +29,5 @@ const randomizeAndFindLongestSequence = (arr: number[]) => {
   )
   return longestSequence
 }
-
-// Example usage:
-// console.log(randomizeAndFindLongestSequence([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
 
 export { randomizeAndFindLongestSequence }

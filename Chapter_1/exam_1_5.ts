@@ -23,7 +23,7 @@ function getWeight_Part1(obj: Object | any): number {
   }
 
   // If argument isn't an object, pass it as if it is an object
-  if (typeof obj !== 'object' || Array.isArray(obj)) return searchObject({ obj })
+  if (typeof obj !== 'object' || obj === null || Array.isArray(obj)) return searchObject({ obj })
 
   return searchObject(obj)
 }
@@ -54,7 +54,7 @@ function getWeight_Part2(obj: Object | any): number {
   }
 
   // If argument isn't an object, pass it as if it is an object
-  if (typeof obj !== 'object' || Array.isArray(obj)) return searchObject({ obj })
+  if (typeof obj !== 'object' || obj === null || Array.isArray(obj)) return searchObject({ obj })
 
   return searchObject(obj)
 }

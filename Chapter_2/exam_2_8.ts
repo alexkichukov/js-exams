@@ -16,9 +16,4 @@ const allHigherThanWeight = (arr: any[], weight: number): boolean => {
   return true
 }
 
-// Example usage:
-// const arr = [6, 'Test', 'value', 1, undefined, null, { name: 'john.doe', role: 'admim' }];
-// console.log(findByWeight(arr, 16));
-// console.log(allHigherThanWeight(arr, 2));
-
-export { findByWeight }
+export { findByWeight, allHigherThanWeight }
