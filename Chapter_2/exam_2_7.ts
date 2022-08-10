@@ -1,12 +1,19 @@
-const randomizeAndFindLongestSequence = (arr: number[]) => {
+// Creates a randomized copy of an array
+export const randomize = <T>(arr: T[]): T[] => {
   const copy = [...arr]
-  const randomized: number[] = []
+  const randomized: T[] = []
 
   // Randomize
   for (let i = 0; i < arr.length; i++) {
     const randIndex = Math.floor(Math.random() * copy.length)
     randomized.push(copy.splice(randIndex, 1)[0])
   }
+
+  return randomized
+}
+
+const randomizeAndFindLongestSequence = (arr: number[]) => {
+  const randomized = randomize(arr)
 
   // Store all sequences of ascending numbers
   const sequences: number[][] = []

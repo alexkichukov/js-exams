@@ -70,9 +70,9 @@ class Color {
   getColorLongHex(): string {
     const { r, g, b, opacity } = this.color
     if (opacity === 1) return `#${r.toString(16)}${g.toString(16)}${b.toString(16)}`
-    return `#${Math.round(opacity * 255).toString(16)}${r.toString(16)}${g.toString(
-      16
-    )}${b.toString(16)}`
+    return `#${r.toString(16)}${g.toString(16)}${b.toString(16)}${Math.round(
+      opacity * 255
+    ).toString(16)}`
   }
 
   getColorShortHex(): string {
@@ -82,11 +82,5 @@ class Color {
     ).toString(16)}`
   }
 }
-
-// Example usage:
-// const c = new Color(156, 245, 111, 0.5);
-// console.log('RGB:      ', c.getColorRGB());
-// console.log('Hex long: ', c.getColorLongHex());
-// console.log('Hex short:', c.getColorShortHex());
 
 export default Color
